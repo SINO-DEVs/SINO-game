@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
@@ -7,11 +6,13 @@ public class MovementPlayer : MonoBehaviour
     public float moveSpeed = 6.0f;
     public float gravity = -9.8f;
     private CharacterController _charController;
+    private Animator _animator;
 
     // Start is called before the first frame update
     void Start()
     {
         _charController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,7 +21,7 @@ public class MovementPlayer : MonoBehaviour
         Vector3 movement = Vector3.zero;
         float horInput = -Input.GetAxis("Horizontal");
         float vertInput = -Input.GetAxis("Vertical");
-
+        _animator.SetBool("isRunning", true);
         if (horInput != 0 || vertInput != 0)
         {
             movement.x = horInput * moveSpeed;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class OrbitCamera : MonoBehaviour
 {
@@ -15,11 +13,17 @@ public class OrbitCamera : MonoBehaviour
         _rotX = transform.eulerAngles.x;
         _offset = target.position - transform.position;
     }
+
     void LateUpdate()
     {
         _rotY += Input.GetAxis("Mouse X") * rotSpeed * 3;
         _rotX += Input.GetAxis("Mouse Y") * rotSpeed * -1;
-        Quaternion rotation = Quaternion.Euler(_rotX, 0, 0);
+
+        if(_rotX > 20 || _rotX < -20) {
+            _rotX = _rotX > 0 ? 20 : -20;
+        }
+
+        Quaternion rotation = Quaternion.Euler(_rotX, _rotY, 0);
         transform.position = target.position - (rotation * _offset);
         transform.LookAt(target);
     }
