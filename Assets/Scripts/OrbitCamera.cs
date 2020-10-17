@@ -3,7 +3,7 @@
 public class OrbitCamera : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    public float rotXSpeed = 4.5f;
+    public float rotXSpeed = 3.0f;
     public float rotYSpeed = 1.5f;
     public float maxYAngle = 20;
     public float minYAngle = -20;
@@ -23,7 +23,7 @@ public class OrbitCamera : MonoBehaviour
     void LateUpdate()
     {
         _rotY += Input.GetAxis("Mouse X") * rotXSpeed;
-        _rotX += Input.GetAxis("Mouse Y") * rotYSpeed;
+        _rotX -= Input.GetAxis("Mouse Y") * rotYSpeed;
 
         if(_rotX > maxYAngle || _rotX < minYAngle) {
             _rotX = _rotX > 0 ? maxYAngle : minYAngle;
