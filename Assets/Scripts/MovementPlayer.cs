@@ -1,21 +1,19 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
 {
     public float moveSpeed = 6.0f;
     public float gravity = -9.8f;
+
     private CharacterController _charController;
     private Animator _animator;
 
-    // Start is called before the first frame update
     void Start()
     {
         _charController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 movement = Vector3.zero;
