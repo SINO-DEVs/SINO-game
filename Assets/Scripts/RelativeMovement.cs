@@ -42,9 +42,10 @@ public class RelativeMovement : MonoBehaviour
             target.eulerAngles = new Vector3(0, target.eulerAngles.y, 0);
             movement = target.TransformDirection(movement);
             target.rotation = tmp;
-            transform.rotation = Quaternion.LookRotation(movement);
+            Quaternion to = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, to, 0.1f);
             Vector3.ClampMagnitude(movement, moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
-            GetComponent<CharacterController>().Move(movement * Time.deltaTime * moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
+            _charController.Move(movement * Time.deltaTime * moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
         }
     }
 }
