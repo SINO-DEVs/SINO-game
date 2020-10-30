@@ -1,5 +1,0 @@
-######## ENVIRONMENT ########
-https://assetstore.unity.com/packages/3d/environments/snaps-prototype-office-137490
-
-######## CHARACTER ########
-https://assetstore.unity.com/packages/3d/characters/toony-tiny-people-demo-113188
