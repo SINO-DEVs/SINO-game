@@ -43,16 +43,17 @@ public class EnemyVision : MonoBehaviour
             //animations
             targetScript.reactToGuard(transform);
             if (!targetKilled) //avoid repeating animation
-                _animator.SetBool("foundTarget", true);
+                _animator.SetBool("isFoundTarget", true);
             StartCoroutine(AfterAnimation());
         }   
     }
 
     private IEnumerator AfterAnimation()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
         targetKilled = true;
-        _animator.SetBool("foundTarget", false);
+        _animator.SetBool("isFoundTarget", false);
+        _animator.SetBool("isWalking", true);
     }
 
 }
