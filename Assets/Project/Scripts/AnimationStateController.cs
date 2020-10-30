@@ -30,11 +30,12 @@ public class AnimationStateController : MonoBehaviour {
         bool isWalking = animator.GetBool(isWalkingHash);
         bool isFoundTarget = animator.GetBool(isFoundTargetHash);
 
-        Quaternion.LookRotation(((isForward) ? Vector3.right : Vector3.left));
 
         if (isFoundTarget) {
             animator.SetBool(isWalkingHash, false);
-        } else if (((int)current_distance) % distance != 0 && isWalking) {  
+        } else if (((int)current_distance) % distance != 0 && isWalking) {
+            transform.rotation=Quaternion.LookRotation(((isForward) ? Vector3.right : Vector3.left));
+
             current_distance += speed * Time.deltaTime;
             animator.SetBool(isWalkingHash, true);
             transform.position += ((isForward) ? Vector3.right : Vector3.left) * Time.deltaTime * speed;
@@ -48,6 +49,7 @@ public class AnimationStateController : MonoBehaviour {
                 isForward = !isForward;
             }
         }
+
     }
     private IEnumerator LetAnimationHappen() {
         yield return new WaitForSeconds(0.7f);
