@@ -11,6 +11,7 @@ public class OrbitCamera : MonoBehaviour
     private float _rotY;
     private float _rotX;
     private Vector3 _offset;
+    private Vector3 _offsetStart;
 
 
     void Start()
@@ -18,6 +19,7 @@ public class OrbitCamera : MonoBehaviour
         _rotY = transform.eulerAngles.y;
         _rotX = transform.eulerAngles.x;
         _offset = target.position - transform.position;
+        _offsetStart = _offset;
     }
 
     void LateUpdate()
@@ -30,7 +32,16 @@ public class OrbitCamera : MonoBehaviour
         }
 
         Quaternion rotation = Quaternion.Euler(_rotX, _rotY, 0);
-        transform.position = target.position - (rotation * _offset);
+        transform.position = target.position - (rotation * _offsetStart);
+
+        //close distance if there is a obstacle between player and camera
+        RaycastHit hit;
+        if (Physics.Linecast(target.position, transform.position, out hit))
+        {
+            _offset = transform.position.normalized * hit.distance;
+            transform.position = target.position - (rotation * _offset);
+        } 
+
         transform.LookAt(target);
     }
 }
