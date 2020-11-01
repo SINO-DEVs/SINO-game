@@ -12,6 +12,8 @@ public class RelativeMovement : MonoBehaviour
     private CharacterController _charController;
     private Animator _animator;
     private bool isDead = false;
+    private float gravity = -9.81f;
+    private float yVelocity = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +57,17 @@ public class RelativeMovement : MonoBehaviour
             Vector3.ClampMagnitude(movement, moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
             _charController.Move(movement * Time.deltaTime * moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
         }
+
+        //gravity for stairs
+        if (!_charController.isGrounded) {
+            movement = Vector3.zero;
+            yVelocity += gravity;
+            movement.y = yVelocity;
+            _charController.Move(movement * Time.deltaTime);
+        } else {
+            yVelocity = 0.0f;
+        }
+
     }
 
     public void reactToGuard(Transform guard)
