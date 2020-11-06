@@ -91,7 +91,7 @@ public class RelativeMovement : MonoBehaviour
 
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(.6f);
         _animator.SetBool("isDead", isDead);
     }
 
