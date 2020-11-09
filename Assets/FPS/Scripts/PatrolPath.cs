@@ -18,7 +18,7 @@ public class PatrolPath : MonoBehaviour
 
     public float GetDistanceToNode(Vector3 origin, int destinationNodeIndex)
     {
-        if(destinationNodeIndex < 0 || destinationNodeIndex >= pathNodes.Count || pathNodes[destinationNodeIndex] == null)
+        if (destinationNodeIndex < 0 || destinationNodeIndex >= pathNodes.Count || pathNodes[destinationNodeIndex] == null)
         {
             return -1f;
         }
@@ -42,7 +42,7 @@ public class PatrolPath : MonoBehaviour
         for (int i = 0; i < pathNodes.Count; i++)
         {
             int nextIndex = i + 1;
-            if(nextIndex >= pathNodes.Count)
+            if (nextIndex >= pathNodes.Count)
             {
                 nextIndex -= pathNodes.Count;
             }

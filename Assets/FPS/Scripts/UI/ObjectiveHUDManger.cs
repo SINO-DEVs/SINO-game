@@ -53,7 +53,7 @@ public class ObjectiveHUDManger : MonoBehaviour
     void OnUpdateObjective(UnityActionUpdateObjective updateObjective)
     {
         if (m_ObjectivesDictionnary.TryGetValue(updateObjective.objective, out ObjectiveToast toast) && toast != null)
-            //&& !string.IsNullOrEmpty(descriptionText))
+        //&& !string.IsNullOrEmpty(descriptionText))
         {
             // set the new updated description for the objective, and forces the content size fitter to be recalculated
             Canvas.ForceUpdateCanvases();

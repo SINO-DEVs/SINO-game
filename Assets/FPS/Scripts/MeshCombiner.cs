@@ -53,7 +53,7 @@ public class MeshCombiner : MonoBehaviour
                 renderersForThisCell.Add(m);
                 validRenderers.Remove(m);
             }
-        } 
+        }
 
         if (renderersForThisCell.Count > 0)
         {
@@ -94,7 +94,7 @@ public class MeshCombiner : MonoBehaviour
 
             for (int i = 0; i < GetGridCellCount(); i++)
             {
-                if(GetGridCellBounds(i, out Bounds bounds))
+                if (GetGridCellBounds(i, out Bounds bounds))
                 {
                     Gizmos.DrawWireCube(bounds.center, bounds.size);
                 }

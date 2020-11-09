@@ -65,7 +65,7 @@ public class Jetpack : MonoBehaviour
     void Update()
     {
         // jetpack can only be used if not grounded and jump has been pressed again once in-air
-        if(isPlayergrounded())
+        if (isPlayergrounded())
         {
             m_CanUseJetpack = false;
         }
@@ -75,8 +75,8 @@ public class Jetpack : MonoBehaviour
         }
 
         // jetpack usage
-        bool jetpackIsInUse = m_CanUseJetpack && isJetpackUnlocked  && currentFillRatio > 0f && m_InputHandler.GetJumpInputHeld();
-        if(jetpackIsInUse)
+        bool jetpackIsInUse = m_CanUseJetpack && isJetpackUnlocked && currentFillRatio > 0f && m_InputHandler.GetJumpInputHeld();
+        if (jetpackIsInUse)
         {
             // store the last time of use for refill delay
             m_LastTimeOfUse = Time.time;

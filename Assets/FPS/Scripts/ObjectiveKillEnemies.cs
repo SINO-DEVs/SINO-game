@@ -25,7 +25,7 @@ public class ObjectiveKillEnemies : MonoBehaviour
 
         if (mustKillAllEnemies)
             killsToCompleteObjective = m_EnemyManager.numberOfEnemiesTotal;
-        
+
 
         // set a title and description specific for this type of objective, if it hasn't one
         if (string.IsNullOrEmpty(m_Objective.title))

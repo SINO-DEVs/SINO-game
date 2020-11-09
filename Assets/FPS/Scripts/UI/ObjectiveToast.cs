@@ -111,7 +111,7 @@ public class ObjectiveToast : MonoBehaviour
         }
 
         if (m_IsMovingIn && !m_IsMovingOut)
-        { 
+        {
             // move in
             if (timeSinceFadeStarted < moveInDuration)
             {
@@ -156,7 +156,7 @@ public class ObjectiveToast : MonoBehaviour
         }
 
         if (m_IsMovingOut)
-        { 
+        {
             // move out
             if (timeSinceFadeStarted < moveOutDuration)
             {

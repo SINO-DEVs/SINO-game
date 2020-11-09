@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
     public List<EnemyController> enemies { get; private set; }
     public int numberOfEnemiesTotal { get; private set; }
     public int numberOfEnemiesRemaining => enemies.Count;
-    
+
     public UnityAction<EnemyController, int> onRemoveEnemy;
 
     private void Awake()

@@ -19,7 +19,7 @@ public class Actor : MonoBehaviour
         // Register as an actor
         if (!m_ActorsManager.actors.Contains(this))
         {
-            m_ActorsManager.actors.Add(this); 
+            m_ActorsManager.actors.Add(this);
         }
     }
 

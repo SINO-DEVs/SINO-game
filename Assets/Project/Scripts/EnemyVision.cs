@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
@@ -28,7 +27,7 @@ public class EnemyVision : MonoBehaviour
         Ray ray = new Ray(transform.position, target.position - transform.position + Vector3.up * 0.5f);
         RaycastHit hit;
         Physics.Raycast(ray, out hit);
-        
+
         if (angle < angleVision && dist < distVision && hit.collider.CompareTag("Player"))
         {
             //retrive script palyer
@@ -45,7 +44,7 @@ public class EnemyVision : MonoBehaviour
             if (!targetKilled) //avoid repeating animation
                 _animator.SetBool("isFoundTarget", true);
             StartCoroutine(AfterAnimation());
-        }   
+        }
     }
 
     private IEnumerator AfterAnimation()

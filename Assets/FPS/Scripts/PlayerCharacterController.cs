@@ -24,7 +24,7 @@ public class PlayerCharacterController : MonoBehaviour
     [Tooltip("Sharpness for the movement when grounded, a low value will make the player accelerate and decelerate slowly, a high value will do the opposite")]
     public float movementSharpnessOnGround = 15;
     [Tooltip("Max movement speed when crouching")]
-    [Range(0,1)]
+    [Range(0, 1)]
     public float maxSpeedCrouchedRatio = 0.5f;
     [Tooltip("Max movement speed when not grounded")]
     public float maxSpeedInAir = 10f;
@@ -101,7 +101,7 @@ public class PlayerCharacterController : MonoBehaviour
             return 1f;
         }
     }
-        
+
     Health m_Health;
     PlayerInputHandler m_InputHandler;
     CharacterController m_Controller;
@@ -148,7 +148,7 @@ public class PlayerCharacterController : MonoBehaviour
     void Update()
     {
         // check for Y kill
-        if(!isDead && transform.position.y < killHeight)
+        if (!isDead && transform.position.y < killHeight)
         {
             m_Health.Kill();
         }

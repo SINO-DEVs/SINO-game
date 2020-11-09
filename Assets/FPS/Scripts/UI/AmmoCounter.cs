@@ -56,7 +56,7 @@ public class AmmoCounter : MonoBehaviour
 
         bool isActiveWeapon = m_Weapon == m_PlayerWeaponsManager.GetActiveWeapon();
 
-        canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha , isActiveWeapon ? 1f : unselectedOpacity, Time.deltaTime * 10);
+        canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, isActiveWeapon ? 1f : unselectedOpacity, Time.deltaTime * 10);
         transform.localScale = Vector3.Lerp(transform.localScale, isActiveWeapon ? Vector3.one : unselectedScale, Time.deltaTime * 10);
         controlKeysRoot.SetActive(!isActiveWeapon);
 

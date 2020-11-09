@@ -152,9 +152,9 @@ public class PlayerWeaponsManager : MonoBehaviour
         isPointingAtEnemy = false;
         if (activeWeapon)
         {
-            if(Physics.Raycast(weaponCamera.transform.position, weaponCamera.transform.forward, out RaycastHit hit, 1000, -1, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(weaponCamera.transform.position, weaponCamera.transform.forward, out RaycastHit hit, 1000, -1, QueryTriggerInteraction.Ignore))
             {
-                if(hit.collider.GetComponentInParent<EnemyController>())
+                if (hit.collider.GetComponentInParent<EnemyController>())
                 {
                     isPointingAtEnemy = true;
                 }
@@ -217,7 +217,7 @@ public class PlayerWeaponsManager : MonoBehaviour
             m_TimeStartedWeaponSwitch = Time.time;
 
             // Handle case of switching to a valid weapon for the first time (simply put it up without putting anything down first)
-            if(GetActiveWeapon() == null)
+            if (GetActiveWeapon() == null)
             {
                 m_WeaponMainLocalPosition = downWeaponPosition.localPosition;
                 m_WeaponSwitchState = WeaponSwitchState.PutUpNew;
@@ -240,9 +240,9 @@ public class PlayerWeaponsManager : MonoBehaviour
     public bool HasWeapon(WeaponController weaponPrefab)
     {
         // Checks if we already have a weapon coming from the specified prefab
-        foreach(var w in m_WeaponSlots)
+        foreach (var w in m_WeaponSlots)
         {
-            if(w != null && w.sourcePrefab == weaponPrefab.gameObject)
+            if (w != null && w.sourcePrefab == weaponPrefab.gameObject)
             {
                 return true;
             }
@@ -330,7 +330,7 @@ public class PlayerWeaponsManager : MonoBehaviour
         }
 
         // Handle transiting to new switch state
-        if(switchingTimeFactor >= 1f)
+        if (switchingTimeFactor >= 1f)
         {
             if (m_WeaponSwitchState == WeaponSwitchState.PutDownPrevious)
             {
@@ -351,7 +351,7 @@ public class PlayerWeaponsManager : MonoBehaviour
                     onSwitchedToWeapon.Invoke(newWeapon);
                 }
 
-                if(newWeapon)
+                if (newWeapon)
                 {
                     m_TimeStartedWeaponSwitch = Time.time;
                     m_WeaponSwitchState = WeaponSwitchState.PutUpNew;
@@ -383,7 +383,7 @@ public class PlayerWeaponsManager : MonoBehaviour
     public bool AddWeapon(WeaponController weaponPrefab)
     {
         // if we already hold this weapon type (a weapon coming from the same source prefab), don't add the weapon
-        if(HasWeapon(weaponPrefab))
+        if (HasWeapon(weaponPrefab))
         {
             return false;
         }
@@ -392,7 +392,7 @@ public class PlayerWeaponsManager : MonoBehaviour
         for (int i = 0; i < m_WeaponSlots.Length; i++)
         {
             // only add the weapon if the slot is free
-            if(m_WeaponSlots[i] == null)
+            if (m_WeaponSlots[i] == null)
             {
                 // spawn the weapon prefab as child of the weapon socket
                 WeaponController weaponInstance = Instantiate(weaponPrefab, weaponParentSocket);
@@ -413,7 +413,7 @@ public class PlayerWeaponsManager : MonoBehaviour
 
                 m_WeaponSlots[i] = weaponInstance;
 
-                if(onAddedWeapon != null)
+                if (onAddedWeapon != null)
                 {
                     onAddedWeapon.Invoke(weaponInstance, i);
                 }
@@ -437,7 +437,7 @@ public class PlayerWeaponsManager : MonoBehaviour
         for (int i = 0; i < m_WeaponSlots.Length; i++)
         {
             // when weapon found, remove it
-            if(m_WeaponSlots[i] == weaponInstance)
+            if (m_WeaponSlots[i] == weaponInstance)
             {
                 m_WeaponSlots[i] = null;
 
@@ -449,12 +449,12 @@ public class PlayerWeaponsManager : MonoBehaviour
                 Destroy(weaponInstance.gameObject);
 
                 // Handle case of removing active weapon (switch to next weapon)
-                if(i == activeWeaponIndex)
+                if (i == activeWeaponIndex)
                 {
                     SwitchWeapon(true);
                 }
 
-                return true; 
+                return true;
             }
         }
 
@@ -469,7 +469,7 @@ public class PlayerWeaponsManager : MonoBehaviour
     public WeaponController GetWeaponAtSlotIndex(int index)
     {
         // find the active weapon in our weapon slots based on our active weapon index
-        if(index >= 0 &&
+        if (index >= 0 &&
             index < m_WeaponSlots.Length)
         {
             return m_WeaponSlots[index];

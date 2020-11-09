@@ -56,7 +56,7 @@ public class CrosshairManager : MonoBehaviour
 
     void OnWeaponChanged(WeaponController newWeapon)
     {
-        if(newWeapon)
+        if (newWeapon)
         {
             crosshairImage.enabled = true;
             m_CrosshairDataDefault = newWeapon.crosshairDataDefault;

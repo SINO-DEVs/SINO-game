@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 
 [CustomEditor(typeof(PrefabReplacer))]
@@ -10,7 +10,7 @@ public class PrefabReplacerEditor : Editor
     {
         DrawDefaultInspector();
 
-        if(GUILayout.Button("Replace"))
+        if (GUILayout.Button("Replace"))
         {
             Replace((target as PrefabReplacer));
         }
@@ -21,7 +21,7 @@ public class PrefabReplacerEditor : Editor
         List<GameObject> allPrefabObjectsInScene = new List<GameObject>();
         foreach (Transform t in GameObject.FindObjectsOfType<Transform>())
         {
-            if(PrefabUtility.IsAnyPrefabInstanceRoot(t.gameObject))
+            if (PrefabUtility.IsAnyPrefabInstanceRoot(t.gameObject))
             {
                 allPrefabObjectsInScene.Add(t.gameObject);
             }

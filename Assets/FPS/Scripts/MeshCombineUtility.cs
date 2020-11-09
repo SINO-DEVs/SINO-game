@@ -40,7 +40,7 @@ public static class MeshCombineUtility
         int renderersCount = renderers.Count;
 
         List<RenderBatchData> renderBatches = new List<RenderBatchData>();
-        
+
         // Build render batches for all unique material + submeshIndex combinations
         for (int i = 0; i < renderersCount; i++)
         {
@@ -68,7 +68,7 @@ public static class MeshCombineUtility
                     continue;
 
                 int batchIndex = GetExistingRenderBatch(renderBatches, materials[s], meshRenderer, s);
-                if(batchIndex >= 0)
+                if (batchIndex >= 0)
                 {
                     renderBatches[batchIndex].meshesWithTRS.Add(new RenderBatchData.MeshAndTRS(mesh, Matrix4x4.TRS(t.position, t.rotation, t.lossyScale)));
                 }
@@ -87,7 +87,7 @@ public static class MeshCombineUtility
 
             // Destroy probuilder component if present
             ProBuilderMesh pbm = meshRenderer.GetComponent<ProBuilderMesh>();
-            if(pbm)
+            if (pbm)
             {
                 GameObject.Destroy(pbm);
             }
@@ -160,7 +160,7 @@ public static class MeshCombineUtility
         for (int i = 0; i < renderBatches.Count; i++)
         {
             RenderBatchData data = renderBatches[i];
-            if (data.material == mat && 
+            if (data.material == mat &&
                 data.submeshIndex == submeshIndex &&
                 data.shadowMode == ren.shadowCastingMode &&
                 data.receiveShadows == ren.receiveShadows)
