@@ -3,6 +3,9 @@
 public class OrbitCamera : MonoBehaviour
 {
     [SerializeField] private Transform target;
+
+    public bool Running;
+
     public float rotXSpeed = 3.0f;
     public float rotYSpeed = 1.5f;
     public float maxYAngle = 20;
@@ -20,14 +23,21 @@ public class OrbitCamera : MonoBehaviour
         _rotX = transform.eulerAngles.x;
         _offset = target.position - transform.position;
         _offsetStart = _offset;
+        Running = true;
     }
 
     void LateUpdate()
     {
+        if (!Running)
+        {
+            return;
+        }
+
         _rotY += Input.GetAxis("Mouse X") * rotXSpeed;
         _rotX -= Input.GetAxis("Mouse Y") * rotYSpeed;
 
-        if(_rotX > maxYAngle || _rotX < minYAngle) {
+        if (_rotX > maxYAngle || _rotX < minYAngle)
+        {
             _rotX = _rotX > 0 ? maxYAngle : minYAngle;
         }
 
@@ -40,7 +50,7 @@ public class OrbitCamera : MonoBehaviour
         {
             _offset = transform.position.normalized * hit.distance;
             transform.position = target.position - (rotation * _offset);
-        } 
+        }
 
         transform.LookAt(target);
     }

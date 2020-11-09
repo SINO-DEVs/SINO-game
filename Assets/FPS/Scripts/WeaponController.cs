@@ -288,7 +288,7 @@ public class WeaponController : MonoBehaviour
 
     bool TryShoot()
     {
-        if (m_CurrentAmmo >= 1f 
+        if (m_CurrentAmmo >= 1f
             && m_LastTimeShot + delayBetweenShots < Time.time)
         {
             HandleShoot();
@@ -335,7 +335,7 @@ public class WeaponController : MonoBehaviour
     void HandleShoot()
     {
         int bulletsPerShotFinal = shootType == WeaponShootType.Charge ? Mathf.CeilToInt(currentCharge * bulletsPerShot) : bulletsPerShot;
-        
+
         // spawn all bullets with random direction
         for (int i = 0; i < bulletsPerShotFinal; i++)
         {

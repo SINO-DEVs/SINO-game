@@ -29,7 +29,7 @@ public class ObjectiveReachPoint : MonoBehaviour
             m_Objective.CompleteObjective(string.Empty, string.Empty, "Objective complete : " + m_Objective.title);
 
             // destroy the transform, will remove the compass marker if it has one
-            Destroy(destroyRoot.gameObject); 
+            Destroy(destroyRoot.gameObject);
         }
     }
 }

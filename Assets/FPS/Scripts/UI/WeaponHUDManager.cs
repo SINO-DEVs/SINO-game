@@ -44,14 +44,14 @@ public class WeaponHUDManager : MonoBehaviour
         int foundCounterIndex = -1;
         for (int i = 0; i < m_AmmoCounters.Count; i++)
         {
-            if(m_AmmoCounters[i].weaponCounterIndex == weaponIndex)
+            if (m_AmmoCounters[i].weaponCounterIndex == weaponIndex)
             {
                 foundCounterIndex = i;
                 Destroy(m_AmmoCounters[i].gameObject);
             }
         }
 
-        if(foundCounterIndex >= 0)
+        if (foundCounterIndex >= 0)
         {
             m_AmmoCounters.RemoveAt(foundCounterIndex);
         }

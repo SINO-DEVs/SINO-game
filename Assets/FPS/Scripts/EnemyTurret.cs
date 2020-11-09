@@ -78,7 +78,7 @@ public class EnemyTurret : MonoBehaviour
                 Vector3 directionToTarget = (m_EnemyController.knownDetectedTarget.transform.position - turretAimPoint.position).normalized;
                 Quaternion offsettedTargetRotation = Quaternion.LookRotation(directionToTarget) * m_RotationWeaponForwardToPivot;
                 m_PivotAimingRotation = Quaternion.Slerp(m_PreviousPivotAimingRotation, offsettedTargetRotation, (mustShoot ? aimRotationSharpness : lookAtRotationSharpness) * Time.deltaTime);
-                
+
                 // shoot
                 if (mustShoot)
                 {
@@ -120,7 +120,7 @@ public class EnemyTurret : MonoBehaviour
 
     void OnDetectedTarget()
     {
-        if(aiState == AIState.Idle)
+        if (aiState == AIState.Idle)
         {
             aiState = AIState.Attack;
         }

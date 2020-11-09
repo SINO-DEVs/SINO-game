@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RelativeMovement : MonoBehaviour
@@ -59,12 +58,15 @@ public class RelativeMovement : MonoBehaviour
         }
 
         //gravity for stairs
-        if (!_charController.isGrounded) {
+        if (!_charController.isGrounded)
+        {
             movement = Vector3.zero;
             yVelocity += gravity;
             movement.y = yVelocity;
             _charController.Move(movement * Time.deltaTime);
-        } else {
+        }
+        else
+        {
             yVelocity = 0.0f;
         }
 
@@ -84,6 +86,11 @@ public class RelativeMovement : MonoBehaviour
         rot.x = 0;
         rot.z = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, 0.01f);
+
+        ObjectsInteraction oi = GetComponent<ObjectsInteraction>();
+        oi.Running = false;
+        OrbitCamera oc = target.GetComponent<OrbitCamera>();
+        oc.Running = false;
 
         //start animation after few moments
         StartCoroutine(Die());

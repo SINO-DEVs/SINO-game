@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TimedSelfDestruct : MonoBehaviour
 {
@@ -15,7 +13,7 @@ public class TimedSelfDestruct : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time > m_spawnTime + lifeTime)
+        if (Time.time > m_spawnTime + lifeTime)
         {
             Destroy(gameObject);
         }

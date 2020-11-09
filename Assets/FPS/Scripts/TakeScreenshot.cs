@@ -61,7 +61,7 @@ public class TakeScreenshot : MonoBehaviour
         }
 
         if (m_ScreenshotTaken)
-        { 
+        {
             LoadScreenshot();
 #if UNITY_EDITOR
             AssetDatabase.Refresh();

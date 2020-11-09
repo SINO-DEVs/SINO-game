@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteInEditMode]
 public class TemplateObject : MonoBehaviour
@@ -9,6 +7,6 @@ public class TemplateObject : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 }

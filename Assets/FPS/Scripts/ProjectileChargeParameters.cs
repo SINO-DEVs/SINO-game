@@ -22,7 +22,7 @@ public class ProjectileChargeParameters : MonoBehaviour
     {
         // Apply the parameters based on projectile charge
         ProjectileStandard proj = GetComponent<ProjectileStandard>();
-        if(proj)
+        if (proj)
         {
             proj.damage = damage.GetValueFromRatio(m_ProjectileBase.initialCharge);
             proj.radius = radius.GetValueFromRatio(m_ProjectileBase.initialCharge);

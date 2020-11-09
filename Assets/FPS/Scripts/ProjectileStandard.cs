@@ -79,7 +79,7 @@ public class ProjectileStandard : MonoBehaviour
 
         // Handle case of player shooting (make projectiles not go through walls, and remember center-of-screen trajectory)
         PlayerWeaponsManager playerWeaponsManager = m_ProjectileBase.owner.GetComponent<PlayerWeaponsManager>();
-        if(playerWeaponsManager)
+        if (playerWeaponsManager)
         {
             m_HasTrajectoryOverride = true;
 
@@ -95,7 +95,7 @@ public class ProjectileStandard : MonoBehaviour
             {
                 m_HasTrajectoryOverride = false;
             }
-            
+
             if (Physics.Raycast(playerWeaponsManager.weaponCamera.transform.position, cameraToMuzzle.normalized, out RaycastHit hit, cameraToMuzzle.magnitude, hittableLayers, k_TriggerInteraction))
             {
                 if (IsHitValid(hit))
@@ -126,7 +126,7 @@ public class ProjectileStandard : MonoBehaviour
             m_ConsumedTrajectoryCorrectionVector += correctionThisFrame;
 
             // Detect end of correction
-            if(m_ConsumedTrajectoryCorrectionVector.sqrMagnitude == m_TrajectoryCorrectionVector.sqrMagnitude)
+            if (m_ConsumedTrajectoryCorrectionVector.sqrMagnitude == m_TrajectoryCorrectionVector.sqrMagnitude)
             {
                 m_HasTrajectoryOverride = false;
             }
@@ -165,7 +165,7 @@ public class ProjectileStandard : MonoBehaviour
             if (foundHit)
             {
                 // Handle case of casting while already inside a collider
-                if(closestHit.distance <= 0f)
+                if (closestHit.distance <= 0f)
                 {
                     closestHit.point = root.position;
                     closestHit.normal = -transform.forward;
@@ -181,13 +181,13 @@ public class ProjectileStandard : MonoBehaviour
     bool IsHitValid(RaycastHit hit)
     {
         // ignore hits with an ignore component
-        if(hit.collider.GetComponent<IgnoreHitDetection>())
+        if (hit.collider.GetComponent<IgnoreHitDetection>())
         {
             return false;
         }
 
         // ignore hits with triggers that don't have a Damageable component
-        if(hit.collider.isTrigger && hit.collider.GetComponent<Damageable>() == null)
+        if (hit.collider.isTrigger && hit.collider.GetComponent<Damageable>() == null)
         {
             return false;
         }
@@ -202,7 +202,7 @@ public class ProjectileStandard : MonoBehaviour
     }
 
     void OnHit(Vector3 point, Vector3 normal, Collider collider)
-    { 
+    {
         // damage
         if (areaOfDamage)
         {

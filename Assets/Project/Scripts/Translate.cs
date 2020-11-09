@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
+﻿using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public class Translate : MonoBehaviour {
+public class Translate : MonoBehaviour
+{
     public float speed = 3.0f;
     public string obstacleTag = "Obstacle";
     public float obstacleRange = 5.0f;
@@ -14,15 +11,18 @@ public class Translate : MonoBehaviour {
     private Vector3 _rotation;
     private Rigidbody _rigidbody;
 
-    void Awake() {
+    void Awake()
+    {
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    void Start() {
+    void Start()
+    {
         _position = transform.localPosition;
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         // transform.Translate(0, 0, speed * Time.deltaTime);
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;

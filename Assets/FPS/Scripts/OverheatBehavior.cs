@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class OverheatBehavior : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class OverheatBehavior : MonoBehaviour
     public float steamVFXEmissionRateMax = 8f;
 
     //Set gradient field to HDR
-    [GradientUsage(true)] 
+    [GradientUsage(true)]
     [Tooltip("Overheat color based on ammo ratio")]
     public Gradient overheatGradient;
     [Tooltip("The material for overheating color animation")]

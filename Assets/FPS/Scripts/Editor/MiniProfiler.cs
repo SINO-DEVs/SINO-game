@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -143,7 +141,7 @@ public class MiniProfiler : EditorWindow
 
         EditorGUILayout.EndScrollView();
 
-        if(m_MustRepaint)
+        if (m_MustRepaint)
         {
             EditorWindow.GetWindow<SceneView>().Repaint();
             m_MustRepaint = false;
@@ -207,18 +205,18 @@ public class MiniProfiler : EditorWindow
             polyCount += mf.sharedMesh.triangles.Length / 3;
 
             bool willBeCombined = false;
-            if(mainMeshCombiner)
+            if (mainMeshCombiner)
             {
                 foreach (GameObject combineParent in mainMeshCombiner.combineParents)
                 {
-                    if(mf.transform.IsChildOf(combineParent.transform))
+                    if (mf.transform.IsChildOf(combineParent.transform))
                     {
                         willBeCombined = true;
                     }
                 }
             }
 
-            if(!willBeCombined)
+            if (!willBeCombined)
             {
                 if (!(mf.GetComponentInParent<PlayerCharacterController>() ||
                     mf.GetComponentInParent<EnemyController>() ||
@@ -263,7 +261,7 @@ public class MiniProfiler : EditorWindow
         if (nonCombinedMeshCount > 50)
         {
             m_SuggestionStrings.Add(nonCombinedMeshCount + " meshes in the scene are not setup to be combined on game start. Make sure that all the meshes " +
-                "that will never move, change, or be removed during play are under the \"Level\" gameObject in the scene, so they can be combined for greater performance. \n \n" + 
+                "that will never move, change, or be removed during play are under the \"Level\" gameObject in the scene, so they can be combined for greater performance. \n \n" +
                 "Note that it is always normal to have a few meshes that will not be combined, such as pickups, player meshes, enemy meshes, etc....");
         }
     }

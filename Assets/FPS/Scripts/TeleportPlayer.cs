@@ -19,7 +19,7 @@ public class TeleportPlayer : MonoBehaviour
         {
             m_PlayerCharacterController.transform.SetPositionAndRotation(transform.position, transform.rotation);
             Health playerHealth = m_PlayerCharacterController.GetComponent<Health>();
-            if(playerHealth)
+            if (playerHealth)
             {
                 playerHealth.Heal(999);
             }

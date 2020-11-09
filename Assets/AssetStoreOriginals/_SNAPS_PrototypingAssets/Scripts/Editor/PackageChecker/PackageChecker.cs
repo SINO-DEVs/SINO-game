@@ -1,11 +1,10 @@
-﻿using System.IO;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
-using UnityEngine;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
-using UnityEditor.Compilation;
-using System;
+using UnityEngine;
 
 
 namespace SNAP
@@ -27,11 +26,11 @@ namespace SNAP
         {
             string filePath = Application.dataPath + "/../Library/PackageChecked";
 
- 
+
             packageToAdd = new List<PackageEntry>();
             listRequest = null;
 
-             
+
             if (!File.Exists(filePath))
             {
                 var packageListFile = Directory.GetFiles(Application.dataPath, "PackageImportList.txt", SearchOption.AllDirectories);
@@ -75,8 +74,8 @@ namespace SNAP
                     for (int i = 0; i < installRequired.Length; i++)
                         installRequired[i] = true;
 
-                     
-                    
+
+
                     foreach (var package in listRequest.Result)
                     {
                         for (int i = 0; i < packageToAdd.Count; i++)
@@ -101,7 +100,7 @@ namespace SNAP
                         }
 
                     }
-                
+
 
                     for (int i = 0; i < packageToAdd.Count; i++)
                     {
@@ -110,7 +109,7 @@ namespace SNAP
                     }
 
 
-                    
+
                     ReimportPackagesByKeyword();
 
 
@@ -139,8 +138,8 @@ namespace SNAP
 
             return newPackage;
         }
-     
-     
+
+
 
         static void ReimportPackagesByKeyword()
         {
@@ -150,7 +149,7 @@ namespace SNAP
 
         }
 
-         
+
 
         static private bool GreaterThan(string versionA, string versionB)
         {

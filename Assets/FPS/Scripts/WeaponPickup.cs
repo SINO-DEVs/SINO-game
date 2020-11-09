@@ -17,7 +17,7 @@ public class WeaponPickup : MonoBehaviour
         m_Pickup.onPick += OnPicked;
 
         // Set all children layers to default (to prefent seeing weapons through meshes)
-        foreach(Transform t in GetComponentsInChildren<Transform>())
+        foreach (Transform t in GetComponentsInChildren<Transform>())
         {
             if (t != transform)
                 t.gameObject.layer = 0;
