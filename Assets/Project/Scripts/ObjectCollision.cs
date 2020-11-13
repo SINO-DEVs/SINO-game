@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ObjectCollision : MonoBehaviour
 {
+    private int value;
 
-    private int _value;
     // Start is called before the first frame update
     void Start()
     {
         if (CompareTag("Collectable_0"))
         {
-            _value = 2000;
+            value = 2000;
         }
     }
 
@@ -26,7 +26,7 @@ public class ObjectCollision : MonoBehaviour
         ObjectsInteraction oi = other.GetComponent<ObjectsInteraction>();
         if (oi != null)
         {
-            oi.IncreasePointsBy(_value);
+            oi.IncreasePointsBy(value);
         }
         Destroy(this.gameObject);
     }

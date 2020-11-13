@@ -4,21 +4,21 @@ using UnityEngine;
 public class RelativeMovement : MonoBehaviour
 {
     [SerializeField] private Transform target;
+    private CharacterController charController;
+    private Animator animator;
 
-    public float moveSpeed = 6.0f;
-    public float speedUpMultiplier = 2.0f;
-
-    private CharacterController _charController;
-    private Animator _animator;
+    [SerializeField] private float moveSpeed = 6.0f;
+    [SerializeField] private float speedUpMultiplier = 2.0f;
     private bool isDead = false;
-    private float gravity = -9.81f;
+    private readonly float gravity = -9.81f;
+
     private float yVelocity = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        _charController = GetComponent<CharacterController>();
-        _animator = GetComponent<Animator>();
+        charController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,14 +28,14 @@ public class RelativeMovement : MonoBehaviour
             return;
 
         bool speedUp = Input.GetKey(KeyCode.LeftShift);
-        _animator.SetBool("isRunning", speedUp);
+        animator.SetBool("isRunning", speedUp);
 
         Vector3 movement = Vector3.zero;
         float horInput = Input.GetAxis("Horizontal");
         float vertInput = Input.GetAxis("Vertical");
 
         bool idle = horInput == 0 && vertInput == 0;
-        _animator.SetBool("idle", idle);
+        animator.SetBool("idle", idle);
 
         if (!idle)
         {
@@ -54,16 +54,16 @@ public class RelativeMovement : MonoBehaviour
 
             //movement palyer
             Vector3.ClampMagnitude(movement, moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
-            _charController.Move(movement * Time.deltaTime * moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
+            charController.Move(movement * Time.deltaTime * moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
         }
 
         //gravity for stairs
-        if (!_charController.isGrounded)
+        if (!charController.isGrounded)
         {
             movement = Vector3.zero;
             yVelocity += gravity;
             movement.y = yVelocity;
-            _charController.Move(movement * Time.deltaTime);
+            charController.Move(movement * Time.deltaTime);
         }
         else
         {
@@ -72,11 +72,11 @@ public class RelativeMovement : MonoBehaviour
 
     }
 
-    public void reactToGuard(Transform guard)
+    public void ReactToGuard(Transform guard)
     {
         //set parameters for animations
-        _animator.SetBool("idle", true);
-        _animator.SetBool("isRunning", false);
+        animator.SetBool("idle", true);
+        animator.SetBool("isRunning", false);
 
         // disable movement player
         isDead = true;
@@ -99,7 +99,7 @@ public class RelativeMovement : MonoBehaviour
     private IEnumerator Die()
     {
         yield return new WaitForSeconds(.6f);
-        _animator.SetBool("isDead", isDead);
+        animator.SetBool("isDead", isDead);
     }
 
 }

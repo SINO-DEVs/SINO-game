@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class ObjectsInteraction : MonoBehaviour
 {
+    public bool Running;
+
     [SerializeField] private Text pointsText;
     [SerializeField] private Text timer;
-
-    public bool Running;
 
     /*
      * points can't go below 0
@@ -23,10 +23,10 @@ public class ObjectsInteraction : MonoBehaviour
                 return 0;
             }
 
-            if (_points.ToString().Length > _maxCharPoints)
+            if (_points.ToString().Length > maxCharPoints)
             {
                 String strPoints = "";
-                for (int i = 0; i < _maxCharPoints; i++)
+                for (int i = 0; i < maxCharPoints; i++)
                 {
                     strPoints += "9";
                 }
@@ -36,15 +36,15 @@ public class ObjectsInteraction : MonoBehaviour
             return _points;
         }
     }
-    private readonly int _maxCharPoints = 10;
+    private readonly int maxCharPoints = 10;
 
-    private float _timerSec;
+    private float timerSec;
     private DateTime start;
 
     void Start()
     {
         _points = 100;
-        _timerSec = 0;
+        timerSec = 0;
         Running = true;
         start = DateTime.Now;
     }
@@ -59,12 +59,12 @@ public class ObjectsInteraction : MonoBehaviour
         var elapsed = DateTime.Now - start;
         timer.text = "Time: " + elapsed.ToString("mm':'ss");
 
-        pointsText.text = String.Format("{0,10:D" + _maxCharPoints + "}", Points);
+        pointsText.text = String.Format("{0,10:D" + maxCharPoints + "}", Points);
 
-        _timerSec += Time.deltaTime;
-        if (_timerSec > 1)
+        timerSec += Time.deltaTime;
+        if (timerSec > 1)
         {
-            _timerSec = 0;
+            timerSec = 0;
             DecreasePointsBy(1);
         }
     }
