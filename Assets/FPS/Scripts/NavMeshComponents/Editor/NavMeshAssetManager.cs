@@ -27,6 +27,7 @@ namespace UnityEditor.AI
 
         List<SavedPrefabNavMeshData> m_PrefabNavMeshDataAssets = new List<SavedPrefabNavMeshData>();
 
+        [System.Obsolete]
         static string GetAndEnsureTargetPath(NavMeshSurface surface)
         {
             // Create directory for the asset if it does not exist yet.
@@ -53,6 +54,7 @@ namespace UnityEditor.AI
             return targetPath;
         }
 
+        [System.Obsolete]
         static void CreateNavMeshAsset(NavMeshSurface surface)
         {
             var targetPath = GetAndEnsureTargetPath(surface);
@@ -99,6 +101,7 @@ namespace UnityEditor.AI
                 AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(assetToDelete));
         }
 
+        [System.Obsolete]
         public void StartBakingSurfaces(UnityEngine.Object[] surfaces)
         {
             // Remove first to avoid double registration of the callback
@@ -127,6 +130,7 @@ namespace UnityEditor.AI
                 , surface.transform.position, surface.transform.rotation);
         }
 
+        [System.Obsolete]
         void UpdateAsyncBuildOperations()
         {
             foreach (var oper in m_BakeOperations)

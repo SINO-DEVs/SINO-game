@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class RelativeMovement : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform target = null;
     private CharacterController charController;
     private Animator animator;
 
     [SerializeField] private float moveSpeed = 6.0f;
     [SerializeField] private float speedUpMultiplier = 2.0f;
-    private bool isDead = false;
     private readonly float gravity = -9.81f;
 
     private float yVelocity = 0.0f;
@@ -24,7 +23,7 @@ public class RelativeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDead)
+        if (!LifeManager.Instance.Alive)
             return;
 
         bool speedUp = Input.GetKey(KeyCode.LeftShift);
@@ -78,19 +77,12 @@ public class RelativeMovement : MonoBehaviour
         animator.SetBool("idle", true);
         animator.SetBool("isRunning", false);
 
-        // disable movement player
-        isDead = true;
-
         //rotation in y in the direction of the guard
         Quaternion rot = Quaternion.LookRotation(guard.position - transform.position);
         rot.x = 0;
         rot.z = 0;
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, 0.01f);
-
-        ObjectsInteraction oi = GetComponent<ObjectsInteraction>();
-        oi.Running = false;
-        OrbitCamera oc = target.GetComponent<OrbitCamera>();
-        oc.Running = false;
+        Messenger<bool>.Broadcast(GameEvent.PLAYER_DEATH, true, MessengerMode.DONT_REQUIRE_LISTENER);
 
         //start animation after few moments
         StartCoroutine(Die());
@@ -99,7 +91,7 @@ public class RelativeMovement : MonoBehaviour
     private IEnumerator Die()
     {
         yield return new WaitForSeconds(.6f);
-        animator.SetBool("isDead", isDead);
+        animator.SetBool("isDead", !LifeManager.Instance.Alive);
     }
 
 }

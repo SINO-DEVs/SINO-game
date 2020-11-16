@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour, IGameManager
 {
-    [SerializeField]
-    private int _score;
+    [SerializeField] private int _score;
     public int Score
     {
         get => _score;
@@ -13,8 +12,6 @@ public class ScoreManager : MonoBehaviour, IGameManager
     
     public static ScoreManager Instance = null;
 
-    private Dictionary<string, int> _scoreTable;
-    
     void Awake()
     {
         Instance = this;
@@ -25,48 +22,23 @@ public class ScoreManager : MonoBehaviour, IGameManager
     public void Startup()
     {
         _Status = ManagerStatus.INITIALIZING;
-        _score = 0;
-        _scoreTable = new Dictionary<string, int>();
-        PopulateScoreTable();
-        Messenger<string>.AddListener(GameEvent.CHARACTER_HIT, ChangeScore);
-        Messenger<string>.AddListener(GameEvent.CHARACTER_FALL, ChangeScore);
-        Messenger<string>.AddListener(GameEvent.ENEMY_HIT, ChangeScore);
+        _score = 100;
+        Messenger<int>.AddListener(GameEvent.SCORE_INCREMENTED, ChangeScore);
         _Status = ManagerStatus.STARTED;
     }
 
-    private void ChangeScore(string eventName)
+    private void ChangeScore(int quantity)
     {
-        try
-        {
-            var quantity = _scoreTable[eventName];
-            _score += quantity;
-            _score = Mathf.Clamp(_score, 0, 999999999);
-        }
-        catch (KeyNotFoundException keyEx)
-        {
-            // Inform in some way that an error happened
-            Debug.LogError("Error " + this.name + ": " + keyEx.Message);
-            return;
-        }
+        _score += quantity;
+        int scoreToShow = Mathf.Clamp(_score, 0, 999999999);
         
         // Broadcast score changed event
-        Messenger<int>.Broadcast(GameEvent.SCORE_CHANGED, _score, MessengerMode.DONT_REQUIRE_LISTENER);
+        Messenger<int>.Broadcast(GameEvent.SCORE_CHANGED, scoreToShow, MessengerMode.DONT_REQUIRE_LISTENER);
     }
     
     void onDestroy()
     {
-        Messenger<string>.RemoveListener(GameEvent.CHARACTER_HIT, ChangeScore);
-        Messenger<string>.RemoveListener(GameEvent.CHARACTER_FALL, ChangeScore);
-        Messenger<string>.RemoveListener(GameEvent.ENEMY_HIT, ChangeScore);
+        Messenger<int>.RemoveListener(GameEvent.SCORE_INCREMENTED, ChangeScore);
     }
 
-    void PopulateScoreTable()
-    {
-        // pro
-        _scoreTable.Add(GameEvent.ENEMY_HIT, 5);
-        
-        // const
-        _scoreTable.Add(GameEvent.CHARACTER_HIT, -5);
-        _scoreTable.Add(GameEvent.CHARACTER_FALL, -10);
-    }
 }

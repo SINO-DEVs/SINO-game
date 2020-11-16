@@ -2,9 +2,7 @@
 
 public class OrbitCamera : MonoBehaviour
 {
-    public bool Running;
-
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform target = null;
     private Vector3 offset;
     private Vector3 offsetStart;
 
@@ -22,12 +20,11 @@ public class OrbitCamera : MonoBehaviour
         rotX = transform.eulerAngles.x;
         offset = target.position - transform.position;
         offsetStart = offset;
-        Running = true;
     }
 
     void LateUpdate()
     {
-        if (!Running)
+        if (!LifeManager.Instance.Alive)
         {
             return;
         }

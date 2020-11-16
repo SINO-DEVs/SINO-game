@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform target = null;
     private Animator animator;
 
     [SerializeField] private float angleVision = 25;

@@ -15,19 +15,13 @@ public class ObjectCollision : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        ObjectsInteraction oi = other.GetComponent<ObjectsInteraction>();
-        if (oi != null)
+        if (other.CompareTag("Player"))
         {
-            oi.IncreasePointsBy(value);
+            Messenger<int>.Broadcast(GameEvent.SCORE_INCREMENTED, value, MessengerMode.DONT_REQUIRE_LISTENER);
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
+        
     }
 }
