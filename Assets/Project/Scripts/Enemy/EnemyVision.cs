@@ -31,7 +31,7 @@ public class EnemyVision : MonoBehaviour
         if (angle < angleVision && dist < distVision && hit.collider.CompareTag("Player"))
         {
             //retrive script palyer
-            RelativeMovement targetScript = hit.transform.gameObject.GetComponent<RelativeMovement>();
+            Player targetScript = hit.transform.gameObject.GetComponent<Player>();
 
             //rotation guard in y
             Quaternion rot = Quaternion.LookRotation(target.position - transform.position);

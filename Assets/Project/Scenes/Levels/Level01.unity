@@ -3641,6 +3641,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4922272387448978, guid: 2b49cf6b0e2134c4a81f3474c005ca8a, type: 3}
   m_PrefabInstance: {fileID: 1065662543}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &1068646254 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1068646254, guid: 4c2d4f7b437fec543ba45405a9b60d21, type: 3}
+  m_PrefabInstance: {fileID: 1793623795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1069128074 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3666119156163935597, guid: 4c2d4f7b437fec543ba45405a9b60d21, type: 3}
+  m_PrefabInstance: {fileID: 1793623795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1097766031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6304,15 +6314,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6176977319581821292, guid: 4c2d4f7b437fec543ba45405a9b60d21, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.680081
+      value: 10.46
       objectReference: {fileID: 0}
     - target: {fileID: 6176977319581821292, guid: 4c2d4f7b437fec543ba45405a9b60d21, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 39.93027
+      value: 43.87
       objectReference: {fileID: 0}
     - target: {fileID: 6176977319581821292, guid: 4c2d4f7b437fec543ba45405a9b60d21, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 87.90045
+      value: 91.84
       objectReference: {fileID: 0}
     - target: {fileID: 6176977319581821292, guid: 4c2d4f7b437fec543ba45405a9b60d21, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6350,8 +6360,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerMale
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 302614958, guid: 4c2d4f7b437fec543ba45405a9b60d21, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c2d4f7b437fec543ba45405a9b60d21, type: 3}
 --- !u!1001 &1807209488
 PrefabInstance:
@@ -7127,6 +7136,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 690945269, guid: aebb1c2e465bf7949821d7c14fc9cf6d, type: 3}
+      propertyPath: firstP
+      value: 
+      objectReference: {fileID: 1068646254}
+    - target: {fileID: 690945269, guid: aebb1c2e465bf7949821d7c14fc9cf6d, type: 3}
+      propertyPath: thirdP
+      value: 
+      objectReference: {fileID: 1069128074}
     - target: {fileID: 3650796781065704186, guid: aebb1c2e465bf7949821d7c14fc9cf6d, type: 3}
       propertyPath: m_Name
       value: Managers
