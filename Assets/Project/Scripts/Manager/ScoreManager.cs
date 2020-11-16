@@ -30,10 +30,10 @@ public class ScoreManager : MonoBehaviour, IGameManager
     private void ChangeScore(int quantity)
     {
         _score += quantity;
-        int scoreToShow = Mathf.Clamp(_score, 0, 999999999);
+        _score = Mathf.Clamp(_score, 0, 999999999);
         
         // Broadcast score changed event
-        Messenger<int>.Broadcast(GameEvent.SCORE_CHANGED, scoreToShow, MessengerMode.DONT_REQUIRE_LISTENER);
+        Messenger<int>.Broadcast(GameEvent.SCORE_CHANGED, _score, MessengerMode.DONT_REQUIRE_LISTENER);
     }
     
     void onDestroy()
