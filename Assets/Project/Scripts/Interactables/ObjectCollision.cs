@@ -4,30 +4,24 @@ using UnityEngine;
 
 public class ObjectCollision : MonoBehaviour
 {
+    private int value;
 
-    private int _value;
     // Start is called before the first frame update
     void Start()
     {
         if (CompareTag("Collectable_0"))
         {
-            _value = 2000;
+            value = 2000;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        ObjectsInteraction oi = other.GetComponent<ObjectsInteraction>();
-        if (oi != null)
+        if (other.CompareTag("Player"))
         {
-            oi.IncreasePointsBy(_value);
+            Messenger<int>.Broadcast(GameEvent.SCORE_INCREMENTED, value, MessengerMode.DONT_REQUIRE_LISTENER);
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
+        
     }
 }

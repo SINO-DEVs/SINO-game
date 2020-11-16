@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform target = null;
+    private Animator animator;
 
-    public float angleVision = 25;
-    public float distVision = 8;
+    [SerializeField] private float angleVision = 25;
+    [SerializeField] private float distVision = 8;
 
-    private Animator _animator;
     private bool targetKilled = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        _animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,9 +40,9 @@ public class EnemyVision : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, 0.01f);
 
             //animations
-            targetScript.reactToGuard(transform);
+            targetScript.ReactToGuard(transform);
             if (!targetKilled) //avoid repeating animation
-                _animator.SetBool("isFoundTarget", true);
+                animator.SetBool("isFoundTarget", true);
             StartCoroutine(AfterAnimation());
         }
     }
@@ -51,8 +51,8 @@ public class EnemyVision : MonoBehaviour
     {
         yield return new WaitForSeconds(0.8f);
         targetKilled = true;
-        _animator.SetBool("isFoundTarget", false);
-        _animator.SetBool("isWalking", true);
+        animator.SetBool("isFoundTarget", false);
+        animator.SetBool("isWalking", true);
     }
 
 }
