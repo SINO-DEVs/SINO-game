@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 
-public class OrbitCamera : MonoBehaviour
+public class FirstPCamera : MonoBehaviour
 {
     [SerializeField] private Transform target = null;
-    private Vector3 offset;
-    private Vector3 offsetStart;
 
     [SerializeField] private float rotXSpeed = 3.0f;
     [SerializeField] private float rotYSpeed = 1.5f;
@@ -18,8 +16,6 @@ public class OrbitCamera : MonoBehaviour
     {
         rotY = transform.eulerAngles.y;
         rotX = transform.eulerAngles.x;
-        offset = target.position - transform.position;
-        offsetStart = offset;
     }
 
     void LateUpdate()
@@ -38,16 +34,6 @@ public class OrbitCamera : MonoBehaviour
         }
 
         Quaternion rotation = Quaternion.Euler(rotX, rotY, 0);
-        transform.position = target.position - (rotation * offsetStart);
-
-        //close distance if there is a obstacle between player and camera
-        RaycastHit hit;
-        if (Physics.Linecast(target.position, transform.position, out hit))
-        {
-            offset = offsetStart.normalized * hit.distance * 0.99f;
-            transform.position = target.position - (rotation * offset);
-        }
-
-        transform.LookAt(target);
+        target.rotation = rotation;
     }
 }

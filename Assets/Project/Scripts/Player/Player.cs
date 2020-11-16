@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class RelativeMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] private Transform target = null;
     private CharacterController charController;
@@ -41,19 +41,27 @@ public class RelativeMovement : MonoBehaviour
             movement.x = horInput;
             movement.z = vertInput;
 
-            //create movement vector from camera perspective
-            Quaternion tmp = target.rotation;
-            target.eulerAngles = new Vector3(0, target.eulerAngles.y, 0);
-            movement = target.TransformDirection(movement);
-            target.rotation = tmp;
+            if (CameraSwitchManager.Instance.ThirdPActive)
+            {
+                //create movement vector from camera perspective
+                Quaternion tmp = target.rotation;
+                target.eulerAngles = new Vector3(0, target.eulerAngles.y, 0);
+                movement = target.TransformDirection(movement);
+                target.rotation = tmp;
 
-            //rotation payer
-            Quaternion to = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.Slerp(transform.rotation, to, 0.1f);
+                //rotation payer
+                Quaternion to = Quaternion.LookRotation(movement);
+                transform.rotation = Quaternion.Slerp(transform.rotation, to, 0.1f);
 
-            //movement palyer
-            Vector3.ClampMagnitude(movement, moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
-            charController.Move(movement * Time.deltaTime * moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
+                //movement palyer
+                Vector3.ClampMagnitude(movement, moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
+                charController.Move(movement * Time.deltaTime * moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
+            } else
+            {
+                charController.Move(transform.forward * movement.z * Time.deltaTime * moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
+                charController.Move(transform.right * movement.x * Time.deltaTime * moveSpeed * (speedUp ? speedUpMultiplier : 1.0f));
+            }
+            
         }
 
         //gravity for stairs
