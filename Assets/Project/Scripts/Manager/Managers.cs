@@ -57,4 +57,9 @@ public class Managers : MonoBehaviour
         _startSequence.TryGetValue(typeof(T), out baseManager);
         return baseManager as T;
     }
+
+    private void OnDestroy()
+    {
+        _startSequence = new Dictionary<Type, IGameManager>();
+    }
 }
