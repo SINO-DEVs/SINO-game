@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RelativeMovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class RelativeMovement : MonoBehaviour
     private bool isDead = false;
     private float gravity = -9.81f;
     private float yVelocity = 0.0f;
+    private bool endAnimation = false;
 
     // Start is called before the first frame update
     void Start()
@@ -94,12 +96,21 @@ public class RelativeMovement : MonoBehaviour
 
         //start animation after few moments
         StartCoroutine(Die());
+
+        if(endAnimation)
+            DisplayGameOver();
     }
 
     private IEnumerator Die()
     {
         yield return new WaitForSeconds(.6f);
         _animator.SetBool("isDead", isDead);
+        yield return new WaitForSeconds(1.0f);
+        endAnimation = true;
     }
 
+    private void DisplayGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
 }

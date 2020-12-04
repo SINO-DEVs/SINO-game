@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectCollision : MonoBehaviour
 {
@@ -29,5 +30,17 @@ public class ObjectCollision : MonoBehaviour
             oi.IncreasePointsBy(_value);
         }
         Destroy(this.gameObject);
+        waitFor(0.5f);
+        displayWinScreen();
+    }
+
+    private IEnumerator waitFor(float s)
+    {
+        yield return new WaitForSeconds(s);
+    }
+
+    private void displayWinScreen()
+    {
+        SceneManager.LoadScene("WinScreen");
     }
 }
