@@ -89,9 +89,9 @@ public class Player : MonoBehaviour {
     }
 
     private IEnumerator FootSteps() {
-        yield return new WaitForSeconds(0.2f);
-        if (!FindObjectOfType<AudioManager>().isPlaying("FootStepsSound"))
-            FindObjectOfType<AudioManager>().Play("FootStepsSound");
+        yield return new WaitForSeconds(0.3f);
+        if (!FindObjectOfType<AudioManager>().isPlaying("FootStepSound"))
+            FindObjectOfType<AudioManager>().PlayOneShot("FootStepSound", animator.GetBool("isRunning") ? 3f:1f);
     }
 
     public void ReactToGuard(Transform guard) {
