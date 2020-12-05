@@ -1397,13 +1397,13 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: ca78898d553c7ef4a824839dd480703a, type: 3}
     name: Level01Extradiegetic
-    volume: 0.2
+    volume: 0.007
     pitch: 0.8
     loop: 1
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: d46f91093f0fc64478622f62c3db05b8, type: 3}
-    name: FootStepsSound
-    volume: 0.973
+  - clip: {fileID: 8300000, guid: 30273dd3f746f5e4f81edd88a9d149f0, type: 3}
+    name: FootStepSound
+    volume: 1
     pitch: 3
     loop: 0
     source: {fileID: 0}
