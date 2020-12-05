@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
     // To check when the main character die
     [SerializeField]
     public bool isDead = false;
+    private bool endAnimation = false;
 
 
     public bool shot = false;
@@ -117,6 +119,8 @@ public class Player : MonoBehaviour {
 
         //start animation after few moments
         StartCoroutine(Die());
+        if (endAnimation)
+            DisplayGameOver();
     }
 
     private IEnumerator FailSound() {
@@ -131,6 +135,9 @@ public class Player : MonoBehaviour {
 
         // Play the shot-gun of the police
         StartCoroutine(ShotGunSound());
+
+        yield return new WaitForSeconds(1.0f);
+        endAnimation = true;
     }
 
     private IEnumerator ShotGunSound() {
@@ -139,5 +146,10 @@ public class Player : MonoBehaviour {
             FindObjectOfType<AudioManager>().Play("ShotGunSound");
             shot = true;
         }
+    }
+
+    private void DisplayGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }
