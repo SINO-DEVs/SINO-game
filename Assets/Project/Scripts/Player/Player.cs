@@ -21,8 +21,13 @@ public class Player : MonoBehaviour {
     private readonly float gravity = -9.81f;
 
 
-    // sounds
-    private AudioSource walkSound;
+    private float footstepDistanceCounter = 1.0f;
+    private float footstepFrequencyWhileSprinting = 4.0f;
+    private float footstepFrequency = 3.0f;
+
+
+    private Vector3 characterVelocity;
+
 
     private float yVelocity = 0.0f;
 
@@ -75,7 +80,7 @@ public class Player : MonoBehaviour {
             }
 
             // Start the sound that simulates the footsteps
-            StartCoroutine(FootSteps());
+            FootSteps(speedUp, movement);
         }
 
         //gravity for stairs
@@ -90,10 +95,15 @@ public class Player : MonoBehaviour {
 
     }
 
-    private IEnumerator FootSteps() {
-        yield return new WaitForSeconds(0.3f);
-        if (!FindObjectOfType<AudioManager>().isPlaying("FootStepSound"))
-            FindObjectOfType<AudioManager>().PlayOneShot("FootStepSound", animator.GetBool("isRunning") ? 3f:1f);
+    private void FootSteps(bool speedUp, Vector3 movement) {
+        float chosenFootstepFrequency = (speedUp ? footstepFrequencyWhileSprinting : footstepFrequency);
+
+        if (footstepDistanceCounter >= 1f / chosenFootstepFrequency) {
+            FindObjectOfType<AudioManager>().PlayOneShot("FootStepSound", speedUp ? 1f : .5f);
+            footstepDistanceCounter = 0f;
+        }
+
+        footstepDistanceCounter += movement.magnitude * Time.deltaTime;
     }
 
     public void ReactToGuard(Transform guard) {
@@ -148,8 +158,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void DisplayGameOver()
-    {
+    private void DisplayGameOver() {
         SceneManager.LoadScene("GameOver");
     }
 }
