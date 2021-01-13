@@ -12,8 +12,23 @@ public class ObjectCollision : MonoBehaviour
     {
         if (CompareTag("Collectable_0"))
         {
-            value = 2000;
+            value = 10000;
+        } else if (CompareTag("Collectable_1"))
+        {
+            value = 5000;
+        } else if (CompareTag("Collectable_2"))
+        {
+            value = 2500;
         }
+        else if (CompareTag("Collectable_3"))
+        {
+            value = 1250;
+        }
+        else if (CompareTag("Collectable_4"))
+        {
+            value = 500;
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)

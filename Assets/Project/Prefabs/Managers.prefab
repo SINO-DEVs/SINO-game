@@ -46,6 +46,74 @@ MonoBehaviour:
   firstP: {fileID: 0}
   thirdP: {fileID: 0}
   ThirdPActive: 0
+--- !u!1 &669460755459898595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2415886079835190786}
+  - component: {fileID: 3227723842209704869}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2415886079835190786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669460755459898595}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -438.08487, y: -313.38953, z: 135.56491}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3650796781065704187}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3227723842209704869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669460755459898595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61afefe4712995d4d81e286a1e39da1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: ca78898d553c7ef4a824839dd480703a, type: 3}
+    name: Level01Extradiegetic
+    volume: 0.007
+    pitch: 0.8
+    loop: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 30273dd3f746f5e4f81edd88a9d149f0, type: 3}
+    name: FootStepSound
+    volume: 1
+    pitch: 3
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 400b8a494043ef646942ee840c23f9f1, type: 3}
+    name: LoseSound
+    volume: 0.2
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a3a7494e3d75c384499d552547461af9, type: 3}
+    name: ShotGunSound
+    volume: 0.2
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &2064741510070843305
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +233,7 @@ Transform:
   - {fileID: 2412524811888818406}
   - {fileID: 990689450852479895}
   - {fileID: 690945268}
+  - {fileID: 2415886079835190786}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
