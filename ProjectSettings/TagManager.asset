@@ -7,6 +7,10 @@ TagManager:
   - Obstacle
   - Enemy
   - Collectable_0
+  - Collectable_1
+  - Collectable_2
+  - Collectable_3
+  - Collectable_4
   layers:
   - Default
   - TransparentFX
