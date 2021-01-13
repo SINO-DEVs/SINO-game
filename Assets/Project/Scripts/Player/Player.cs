@@ -130,7 +130,7 @@ public class Player : MonoBehaviour {
         //start animation after few moments
         StartCoroutine(Die());
         if (endAnimation)
-            DisplayGameOver();
+            Levels.Instance.displayGameOver();
     }
 
     private IEnumerator FailSound() {
@@ -156,9 +156,5 @@ public class Player : MonoBehaviour {
             FindObjectOfType<AudioManager>().Play("ShotGunSound");
             shot = true;
         }
-    }
-
-    private void DisplayGameOver() {
-        SceneManager.LoadScene("GameOver");
     }
 }
