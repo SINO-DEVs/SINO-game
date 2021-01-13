@@ -24,8 +24,7 @@ public class Levels : MonoBehaviour
 
     public void loadNextScene()
     {
-        Debug.Log(offset);
-        if (offset < 4)
+        if (offset < Configs.NUMBER_OF_LEVELS)
         {
             offset++;
             SceneManager.LoadScene(offset);
