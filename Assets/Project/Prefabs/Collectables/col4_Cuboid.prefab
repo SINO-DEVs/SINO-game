@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6257308165339451046}
   - component: {fileID: 819494306501298636}
   m_Layer: 0
-  m_Name: Cuboid
+  m_Name: col4_Cuboid
   m_TagString: Collectable_4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5399692371253815835}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 26.786287, y: 3.362255, z: -5.2433286}
-  m_LocalScale: {x: 0.34479, y: 0.34479, z: 0.34479}
+  m_LocalScale: {x: 0.17417069, y: 0.17417069, z: 0.17417069}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

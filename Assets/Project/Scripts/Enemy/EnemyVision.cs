@@ -15,16 +15,21 @@ public class EnemyVision : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        animator.SetBool("isWalking", false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float angle = Vector3.Angle(target.position - transform.position, transform.forward);
-        float dist = Vector3.Distance(target.position, transform.position);
+        //to test
+        Vector3 guardT = transform.position + Vector3.up * 1.0f;
+        Vector3 targetT = target.position + Vector3.up * 1.0f;
+
+        float angle = Vector3.Angle(targetT - guardT, transform.forward);
+        float dist = Vector3.Distance(targetT, guardT);
 
         //raycast to check obstacles
-        Ray ray = new Ray(transform.position, target.position - transform.position + Vector3.up * 0.5f);
+        Ray ray = new Ray(guardT, targetT - guardT);
         RaycastHit hit;
         Physics.Raycast(ray, out hit);
 
@@ -53,7 +58,7 @@ public class EnemyVision : MonoBehaviour
         targetKilled = true;
         animator.SetBool("isFoundTarget", false);
         //animationEvents
-        animator.SetBool("isWalking", true);
+        //animator.SetBool("isWalking", true);
     }
 
 }
