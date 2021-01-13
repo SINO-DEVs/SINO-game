@@ -14,7 +14,7 @@ public class ScoreRepositoryManager : MonoBehaviour
     public void updateScoreIfGreater(string name, int score)
     {
         int persisted = loadBestScoreFor(name);
-        if (score > persisted && persisted != -1)
+        if (score > persisted)
             saveScoreFor(name, score);
     }
 
