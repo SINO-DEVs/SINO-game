@@ -1,9 +1,20 @@
 ﻿using UnityEngine;
 using System;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour, IGameManager {
 
     public Sound[] sounds;
+
+    public ManagerStatus _Status { get; set; }
+
+    public float soundVolume {
+        get { return AudioListener.volume; }
+        set { AudioListener.volume = value; }
+    }
+    public bool soundMute {
+        get { return AudioListener.pause; }
+        set { AudioListener.pause = value; }
+    }
 
     // This method is called just before the start method
     void Awake() {
@@ -16,6 +27,24 @@ public class AudioManager : MonoBehaviour {
 
             s.source.loop = s.loop;
         }
+    }
+
+    public void PlayOneShot(string name, float pitch) {
+        Sound sourceFounded = Array.Find(sounds, sound => sound.name == name);
+
+        // Manage source not found
+        if (sourceFounded == null) {
+            Debug.LogWarning("Error: sound with name: '" + name + "' has not been founded");
+            return;
+        }
+
+        // To make a more realistic sound each sound cannot sound with the same volume and pitch
+        if (name == "FootStepSound") {
+            sourceFounded.volume = UnityEngine.Random.Range(0.8f, 1f);
+            sourceFounded.pitch = pitch;
+        }
+
+        sourceFounded.source.PlayOneShot(sourceFounded.clip);
     }
 
     public void Play(string name) {
@@ -58,5 +87,9 @@ public class AudioManager : MonoBehaviour {
         }
 
         sourceFounded.source.Stop();
+    }
+
+    public void Startup() {
+        throw new NotImplementedException();
     }
 }

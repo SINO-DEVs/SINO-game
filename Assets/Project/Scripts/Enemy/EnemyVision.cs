@@ -52,6 +52,7 @@ public class EnemyVision : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         targetKilled = true;
         animator.SetBool("isFoundTarget", false);
+        //animationEvents
         animator.SetBool("isWalking", true);
     }
 

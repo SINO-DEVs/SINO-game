@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5254811160625483128}
   - component: {fileID: 5254811160625483130}
   - component: {fileID: 4059546543604401805}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
