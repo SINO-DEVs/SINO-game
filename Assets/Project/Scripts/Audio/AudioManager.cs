@@ -1,9 +1,19 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour, IGameManager {
 
     public Sound[] sounds;
+
+    public Slider mSlider;
+
+    public void SetLevel(float sliderValue) {
+        PlayerPrefs.SetFloat("Volume", sliderValue);
+    }
 
     public ManagerStatus _Status { get; set; } = ManagerStatus.SHUTDOWN;
 
@@ -38,11 +48,22 @@ public class AudioManager : MonoBehaviour, IGameManager {
             return;
         }
 
+        float volume = PlayerPrefs.GetFloat("Volume");
+
+        Debug.Log(volume);
+
         // To make a more realistic sound each sound cannot sound with the same volume and pitch
         if (name == "FootStepSound") {
-            sourceFounded.volume = UnityEngine.Random.Range(0.8f, 1f);
-            sourceFounded.pitch = pitch;
+            if (volume==0.0f)
+                sourceFounded.source.volume = 0.0f;
+            else{
+                sourceFounded.source.volume = UnityEngine.Random.Range(0.8f, 1.0f);
+                sourceFounded.pitch = pitch;
+            }
+            sourceFounded.source.PlayOneShot(sourceFounded.clip);
+            return;
         }
+        sourceFounded.source.volume = volume;
 
         sourceFounded.source.PlayOneShot(sourceFounded.clip);
     }
@@ -56,11 +77,9 @@ public class AudioManager : MonoBehaviour, IGameManager {
             return;
         }
 
-        // To make a more realistic sound each sound cannot sound with the same volume and pitch
-        if (name == "FootStepsSound") {
-            sourceFounded.volume = UnityEngine.Random.Range(0.8f, 1f);
-            sourceFounded.pitch = UnityEngine.Random.Range(0.8f, 1.1f);
-        }
+        float volume = PlayerPrefs.GetFloat("Volume");
+
+        sourceFounded.source.volume = volume;
 
         sourceFounded.source.Play();
     }
@@ -90,6 +109,8 @@ public class AudioManager : MonoBehaviour, IGameManager {
     }
 
     public void Startup() {
+        if (mSlider != null)
+            mSlider.value = PlayerPrefs.GetFloat("Volume");
         _Status = ManagerStatus.INITIALIZING;
         //
         _Status = ManagerStatus.STARTED;
