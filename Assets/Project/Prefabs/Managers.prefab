@@ -157,6 +157,12 @@ MonoBehaviour:
     pitch: 0.8
     loop: 0
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 49610cd2a86139c4780c663ae82f3a35, type: 3}
+    name: collectable
+    volume: 0.2
+    pitch: 0.8
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &2064741510070843305
 GameObject:
   m_ObjectHideFlags: 0
