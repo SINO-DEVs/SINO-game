@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LooseScript : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     public Button backToMenu;
 
