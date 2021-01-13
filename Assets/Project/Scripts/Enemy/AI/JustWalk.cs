@@ -7,6 +7,7 @@ public class JustWalk : MonoBehaviour
     private float speed = 5f;
     private int isWalkingHash;
     private int isFoundTargetHash;
+    private CharacterController charController;
 
 
     // Start is called before the first frame update
@@ -15,6 +16,7 @@ public class JustWalk : MonoBehaviour
         animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
         isFoundTargetHash = Animator.StringToHash("isFoundTarget");
+        charController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,8 @@ public class JustWalk : MonoBehaviour
         else
         {
             animator.SetBool(isWalkingHash, true);
-            transform.position += transform.forward * Time.deltaTime * speed;
+            //transform.position += transform.forward * Time.deltaTime * speed;
+            charController.Move(transform.forward * Time.deltaTime * speed);
         }
        
         

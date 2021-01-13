@@ -5,6 +5,8 @@ using UnityEngine;
 public class RotationGiver : MonoBehaviour
 {
     public float rotation;
+    public bool alternate = false;
+    private bool isActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -12,11 +14,21 @@ public class RotationGiver : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private IEnumerator OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Enemy"))
+        if (collider.CompareTag("Enemy") && !isActive)
         {
+            isActive = true;
             collider.GetComponent<Transform>().Rotate(Vector3.up * rotation);
+
+            if (alternate)
+            {
+                this.transform.Rotate(Vector3.up * rotation);
+                rotation *= -1;
+            }
+
+            yield return new WaitForSeconds(1.0f);
+            isActive = false;
         }
         
     }

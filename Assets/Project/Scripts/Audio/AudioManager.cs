@@ -5,7 +5,7 @@ public class AudioManager : MonoBehaviour, IGameManager {
 
     public Sound[] sounds;
 
-    public ManagerStatus _Status { get; set; }
+    public ManagerStatus _Status { get; set; } = ManagerStatus.SHUTDOWN;
 
     public float soundVolume {
         get { return AudioListener.volume; }
@@ -90,6 +90,8 @@ public class AudioManager : MonoBehaviour, IGameManager {
     }
 
     public void Startup() {
-        throw new NotImplementedException();
+        _Status = ManagerStatus.INITIALIZING;
+        //
+        _Status = ManagerStatus.STARTED;
     }
 }
