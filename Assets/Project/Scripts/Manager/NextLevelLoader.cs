@@ -14,8 +14,6 @@ public class NextLevelLoader : MonoBehaviour
         //Find the GameObject named Best in the scene
         GameObject nextLevelGameObject = GameObject.Find("NextLevelButton");
         nextLevelButton = nextLevelGameObject.GetComponent<Button>();
-        Debug.Log(nextLevelButton);
-        Debug.Log(Levels.Instance);
         nextLevelButton.onClick.AddListener(Levels.Instance.loadNextScene);
     }
 

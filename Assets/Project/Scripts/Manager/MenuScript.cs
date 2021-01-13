@@ -11,8 +11,10 @@ public class MenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button button = backToMenu.GetComponent<Button>();
-        button.onClick.AddListener(goToMenu);
+        //Find the GameObject named Best in the scene
+        GameObject nextLevelGameObject = GameObject.Find("MenuButton");
+        backToMenu = nextLevelGameObject.GetComponent<Button>();
+        backToMenu.onClick.AddListener(goToMenu);
     }
 
     // Update is called once per frame
