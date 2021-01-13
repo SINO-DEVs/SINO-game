@@ -36,10 +36,11 @@ public class ObjectCollision : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Messenger<int>.Broadcast(GameEvent.SCORE_INCREMENTED, value, MessengerMode.DONT_REQUIRE_LISTENER);
+            FindObjectOfType<AudioManager>().PlayOneShot("collectable", 1);
             Destroy(this.gameObject);
+            waitFor(0.5f);
         }
-        Destroy(this.gameObject);
-        waitFor(0.5f);
+        
     }
 
     private IEnumerator waitFor(float s)
