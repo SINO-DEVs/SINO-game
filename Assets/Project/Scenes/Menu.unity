@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 928703348}
   - component: {fileID: 928703347}
   m_Layer: 0
-  m_Name: HighScore
+  m_Name: HighestScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -921,7 +921,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'High Score: '
+  m_Text: 'Highest Score: <n> '
 --- !u!222 &928703348
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1473,6 +1473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f2c826d03ce4b4fba277e6227df6ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highestScore: {fileID: 0}
 --- !u!1 &1505139776
 GameObject:
   m_ObjectHideFlags: 0

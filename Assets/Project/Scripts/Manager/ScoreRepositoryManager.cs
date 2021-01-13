@@ -27,4 +27,11 @@ public class ScoreRepositoryManager : MonoBehaviour
     {
         return PlayerPrefs.GetInt(name, -1);
     }
+
+    public int computeSumOfHighestScores()
+    {
+        return (loadBestScoreFor("Level01") == -1 ? 0 : loadBestScoreFor("Level01")) +
+               (loadBestScoreFor("Level02") == -1 ? 0 : loadBestScoreFor("Level02")) +
+               (loadBestScoreFor("Level03") == -1 ? 0 : loadBestScoreFor("Level03"));
+    }
 }
