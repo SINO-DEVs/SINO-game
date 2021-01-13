@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour, IGameManager
+public class WinScreenManager : MonoBehaviour, IGameManager
 {
-    public static LevelManager Instance = null;
+    public static WinScreenManager Instance = null;
 
     private GameObject[] stillGrabbable;
 
@@ -30,12 +29,7 @@ public class LevelManager : MonoBehaviour, IGameManager
         // There's no gameObjects still grabbable
         if (stillGrabbable == null || stillGrabbable.Length == 0)
         {
-            displayWinScreen();
+            Levels.Instance.displayWinScreen();
         }
-    }
-
-    private void displayWinScreen()
-    {
-        SceneManager.LoadScene("WinScreen");
     }
 }

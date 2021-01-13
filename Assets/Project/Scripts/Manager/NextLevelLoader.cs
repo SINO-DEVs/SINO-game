@@ -1,14 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class NextLevelLoader : MonoBehaviour
 {
-    UnityEngine.UI.Text score;
-    // GUIText score;
+    [SerializeField] private Text score;
+    [SerializeField] private Button nextLevelButton;
+
     void Start()
     {
         loadScore();
+
+        //Find the GameObject named Best in the scene
+        GameObject nextLevelGameObject = GameObject.Find("NextLevelButton");
+        nextLevelButton = nextLevelGameObject.GetComponent<Button>();
+        Debug.Log(nextLevelButton);
+        Debug.Log(Levels.Instance);
+        nextLevelButton.onClick.AddListener(Levels.Instance.loadNextScene);
     }
 
     void loadScore()
@@ -17,10 +25,9 @@ public class NextLevelLoader : MonoBehaviour
         GameObject scoreGameObject = GameObject.Find("ScoreView");
 
         //Get the GUIText Component attached to that GameObject named Best
-        score = scoreGameObject.GetComponent<UnityEngine.UI.Text>();
+        score = scoreGameObject.GetComponent<Text>();
 
         //Load score
-        // PlayerPrefs.GetInt("highscore", 0)
         score.text = "Score: " + ScoreManager.Instance.Score;
     }
 
