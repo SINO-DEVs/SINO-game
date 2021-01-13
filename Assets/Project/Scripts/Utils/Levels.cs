@@ -10,6 +10,7 @@ public class Levels : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+        offset = 1;
     }
 
     // Update is called once per frame
@@ -23,10 +24,8 @@ public class Levels : MonoBehaviour
 
     public void loadNextScene()
     {
-        Scene nextScene = SceneManager.GetSceneAt(offset + 1);
-
-        bool isNotWinAndLooseScreens = nextScene != SceneManager.GetSceneByName("WinScreen") && nextScene != SceneManager.GetSceneByName("GameOver");
-        if (isNotWinAndLooseScreens)
+        Debug.Log(offset);
+        if (offset < 3)
         {
             offset++;
             SceneManager.LoadScene(offset);
