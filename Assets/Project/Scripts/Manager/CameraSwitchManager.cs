@@ -10,7 +10,7 @@ public class CameraSwitchManager : MonoBehaviour, IGameManager
 
     public static CameraSwitchManager Instance = null;
 
-    public bool ThirdPActive;
+    public bool ThirdPActive = false;
 
     void Awake()
     {
@@ -22,7 +22,6 @@ public class CameraSwitchManager : MonoBehaviour, IGameManager
     public void Startup()
     {
         _Status = ManagerStatus.INITIALIZING;
-        ThirdPActive = true;
         checkCameraStatus();
         _Status = ManagerStatus.STARTED;
     }

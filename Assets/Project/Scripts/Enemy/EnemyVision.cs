@@ -21,15 +21,12 @@ public class EnemyVision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //to test
-        Vector3 guardT = transform.position + Vector3.up * 1.0f;
-        Vector3 targetT = target.position + Vector3.up * 1.0f;
 
-        float angle = Vector3.Angle(targetT - guardT, transform.forward);
-        float dist = Vector3.Distance(targetT, guardT);
+        float angle = Vector3.Angle(target.position - transform.position, transform.forward);
+        float dist = Vector3.Distance(target.position, transform.position);
 
         //raycast to check obstacles
-        Ray ray = new Ray(guardT, targetT - guardT);
+        Ray ray = new Ray(transform.position, target.position - transform.position + Vector3.up * 0.5f);
         RaycastHit hit;
         Physics.Raycast(ray, out hit);
 
