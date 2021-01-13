@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinScreenManager : MonoBehaviour, IGameManager
 {
@@ -29,6 +30,8 @@ public class WinScreenManager : MonoBehaviour, IGameManager
         // There's no gameObjects still grabbable
         if (stillGrabbable == null || stillGrabbable.Length == 0)
         {
+            ScoreRepositoryManager.Instance.updateScoreIfGreater(SceneManager.GetActiveScene().name, ScoreManager.Instance.Score);
+            Debug.Log(ScoreRepositoryManager.Instance.loadBestScoreFor(SceneManager.GetActiveScene().name));
             Levels.Instance.displayWinScreen();
         }
     }
