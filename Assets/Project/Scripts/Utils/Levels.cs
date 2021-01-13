@@ -25,7 +25,7 @@ public class Levels : MonoBehaviour
     public void loadNextScene()
     {
         Debug.Log(offset);
-        if (offset < 3)
+        if (offset < 4)
         {
             offset++;
             SceneManager.LoadScene(offset);
