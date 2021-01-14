@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Configs
 {
-    public const int NUMBER_OF_LEVELS = 4;
+    public const int NUMBER_OF_LEVELS = 3;
 }
