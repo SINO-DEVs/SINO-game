@@ -163,6 +163,7 @@ MonoBehaviour:
     pitch: 0.8
     loop: 0
     source: {fileID: 0}
+  mSlider: {fileID: 0}
 --- !u!1 &2064741510070843305
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3650796781065704187}
   - component: {fileID: 1133114157401909801}
+  - component: {fileID: 579283446281137463}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -297,6 +299,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fe9036dbb2a9364d97f9464ee1345fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &579283446281137463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650796781065704186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b911114637708c48a098c5c4f409f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7788032075872137453
