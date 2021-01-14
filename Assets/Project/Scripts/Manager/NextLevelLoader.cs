@@ -26,7 +26,7 @@ public class NextLevelLoader : MonoBehaviour
         score = scoreGameObject.GetComponent<Text>();
 
         //Load score
-        score.text = "Score: " + ScoreManager.Instance.Score;
+        score.text = "Score: " + ScoreRepositoryManager.Instance.computeSumOfHighestScores();
     }
 
     // Update is called once per frame
@@ -34,4 +34,6 @@ public class NextLevelLoader : MonoBehaviour
     {
         
     }
+
+  
 }

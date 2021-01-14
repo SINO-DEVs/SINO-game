@@ -39,7 +39,6 @@ public class Levels : MonoBehaviour
 
     public void displayWinScreen()
     {
-        Debug.Log(this);
         SceneManager.LoadScene("WinScreen");
     }
 
@@ -56,5 +55,8 @@ public class Levels : MonoBehaviour
     public int getOffset()
     {
         return offset;
+    }
+    public void setOffset(int offset) {
+        this.offset = offset;
     }
 }

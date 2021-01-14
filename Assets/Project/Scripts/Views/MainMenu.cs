@@ -5,15 +5,36 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Text highestScore = null;
+    public int offset;
+    [SerializeField] private Button levelChosen;
+
 
     void Start()
     {
         loadHighestScore();
+
+        //Find the GameObject named Best in the scene
+        GameObject nextLevelGameObject = GameObject.Find("Level0"+offset);
+        if (nextLevelGameObject != null) {
+            levelChosen = nextLevelGameObject.GetComponent<Button>();
+            levelChosen.onClick.AddListener(chooseLevel);
+            if (offset == 1)
+                return;
+            int result = PlayerPrefs.GetInt("Level0" + offset, -1);
+            int previousLevel = PlayerPrefs.GetInt("Level0" + (offset-1), -1);
+            if (result == -1 && previousLevel==-1)
+                nextLevelGameObject.SetActive(false);
+        }
+    }
+
+    public void chooseLevel() {
+        SceneManager.LoadScene(offset);
+        Levels.Instance.setOffset(offset);
     }
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(offset);
     }
 
     public void QuitGame()
