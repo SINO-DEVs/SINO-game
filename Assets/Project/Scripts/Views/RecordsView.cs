@@ -6,6 +6,7 @@ using System;
 public class RecordsView : MonoBehaviour
 {
     private Text scores;
+    public int level;
 
     private readonly int maxCharPoints = 10;
 
@@ -13,12 +14,8 @@ public class RecordsView : MonoBehaviour
     void Start()
     {
         scores = GetComponent<Text>();
-        scores.text = String.Format("Level 1: {0,10:D" + maxCharPoints + "}\n" +
-                                    "Level 2: {1,10:D" + maxCharPoints + "}\n" +
-                                    "Level 3: {2,10:D" + maxCharPoints + "}",
-                                    ScoreRepositoryManager.Instance.loadBestScoreFor("Level01"),
-                                    ScoreRepositoryManager.Instance.loadBestScoreFor("Level02"),
-                                    ScoreRepositoryManager.Instance.loadBestScoreFor("Level03"));
+        scores.text = String.Format("Level "+level+": {0,10:D" + maxCharPoints + "}\n",
+                                   Math.Max(ScoreRepositoryManager.Instance.loadBestScoreFor("Level0"+level), 0));
     }
 
     
