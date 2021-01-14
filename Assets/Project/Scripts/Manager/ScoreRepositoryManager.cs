@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreRepositoryManager : MonoBehaviour
+public class ScoreRepositoryManager : MonoBehaviour, IGameManager
 {
     public static ScoreRepositoryManager Instance = null;
+
+    public ManagerStatus _Status { get; set; } = ManagerStatus.SHUTDOWN;
 
     void Awake()
     {
@@ -33,5 +35,11 @@ public class ScoreRepositoryManager : MonoBehaviour
         return (loadBestScoreFor("Level01") == -1 ? 0 : loadBestScoreFor("Level01")) +
                (loadBestScoreFor("Level02") == -1 ? 0 : loadBestScoreFor("Level02")) +
                (loadBestScoreFor("Level03") == -1 ? 0 : loadBestScoreFor("Level03"));
+    }
+
+    public void Startup()
+    {
+        _Status = ManagerStatus.INITIALIZING;
+        _Status = ManagerStatus.STARTED;
     }
 }
