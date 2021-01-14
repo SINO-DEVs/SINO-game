@@ -53,8 +53,6 @@ public class AudioManager : MonoBehaviour, IGameManager {
 
         float volume = PlayerPrefs.GetFloat("Volume");
 
-        Debug.Log(volume);
-
         // To make a more realistic sound each sound cannot sound with the same volume and pitch
         if (name == "FootStepSound") {
             if (volume==0.0f)

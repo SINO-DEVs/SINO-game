@@ -129,8 +129,6 @@ public class Player : MonoBehaviour {
 
         //start animation after few moments
         StartCoroutine(Die());
-        if (endAnimation)
-            Levels.Instance.displayGameOver();
     }
 
     private IEnumerator FailSound() {
@@ -147,7 +145,7 @@ public class Player : MonoBehaviour {
         StartCoroutine(ShotGunSound());
 
         yield return new WaitForSeconds(1.0f);
-        endAnimation = true;
+        Levels.Instance.displayGameOver();
     }
 
     private IEnumerator ShotGunSound() {
