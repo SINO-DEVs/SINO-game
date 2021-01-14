@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
+  - Enemy
+  - Collectable_0
+  - Collectable_1
+  - Collectable_2
+  - Collectable_3
+  - Collectable_4
   layers:
   - Default
   - TransparentFX
@@ -13,9 +20,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Ground
+  - Wall
+  - Enemy
   - 
   - 
   - 
