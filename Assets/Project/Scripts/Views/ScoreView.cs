@@ -19,7 +19,7 @@ public class ScoreView : MonoBehaviour
         scoreText = GetComponent<Text>();
         Messenger<int>.AddListener(GameEvent.SCORE_CHANGED, OnScoreChanged);
         OnScoreChanged(ScoreManager.Instance.Score);
-        record = ScoreRepositoryManager.Instance.loadBestScoreFor(SceneManager.GetActiveScene().name);
+        record = Math.Max(ScoreRepositoryManager.Instance.loadBestScoreFor(SceneManager.GetActiveScene().name), 0);
     }
 
     private void OnScoreChanged(int score)

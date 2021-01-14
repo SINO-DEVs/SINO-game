@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
             int result = PlayerPrefs.GetInt("Level0" + offset, -1);
             int previousLevel = PlayerPrefs.GetInt("Level0" + (offset-1), -1);
             if (result == -1 && previousLevel==-1)
-                nextLevelGameObject.SetActive(false);
+                levelChosen.interactable=false;
         }
     }
 

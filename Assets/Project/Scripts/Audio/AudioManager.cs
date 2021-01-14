@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour, IGameManager {
 
     public Sound[] sounds;
 
+    [SerializeField]
     public Slider mSlider;
 
     public void SetLevel(float sliderValue) {
@@ -28,6 +29,8 @@ public class AudioManager : MonoBehaviour, IGameManager {
 
     // This method is called just before the start method
     void Awake() {
+        if (mSlider != null)
+            mSlider.value = PlayerPrefs.GetFloat("Volume");
         foreach (Sound s in sounds) {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -109,8 +112,6 @@ public class AudioManager : MonoBehaviour, IGameManager {
     }
 
     public void Startup() {
-        if (mSlider != null)
-            mSlider.value = PlayerPrefs.GetFloat("Volume");
         _Status = ManagerStatus.INITIALIZING;
         //
         _Status = ManagerStatus.STARTED;
