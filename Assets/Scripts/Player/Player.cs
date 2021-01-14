@@ -7,8 +7,6 @@ public class Player : MonoBehaviour {
     // To check when the main character die
     [SerializeField]
     public bool isDead = false;
-    private bool endAnimation = false;
-
 
     public bool shot = false;
 
