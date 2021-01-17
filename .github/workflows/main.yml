@@ -24,12 +24,6 @@ jobs:
           path: Library
           key: Library
 
-      # Test
-      - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.3
-        with:
-          unityVersion: 2020.1.7f1
-
       # Build
       - name: Build project
         uses: webbertakken/unity-builder@v0.10
