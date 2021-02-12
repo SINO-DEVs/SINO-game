@@ -4,7 +4,7 @@
 ## Overview
 SINO-game is a 3D game developed with unity 3D. The purpose of this game is to collect as many items as possible in the shortest possible time, obviously, without getting caught by the cops. 
 <p align="center">
-  <img src="./img/level1.PNG"/>
+  <img src="./img/level1.png"/>
 </p>
 ## Main Characters
 <p align="center">
