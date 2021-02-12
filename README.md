@@ -38,7 +38,7 @@ We as SINO-DEVs have been inspired by several games. At first, we didn't want to
 
 Want to contribute? Great!
 
-Feel free to add some new/modify features or the logic game, add levels and characters and so on.
+Feel free to add/modify features or logic game, levels, characters and so on.
 
 ## License
 MIT © License SINO-DEVs
