@@ -4,7 +4,9 @@
 ## Overview
 SINO-game is a 3D game developed with unity 3D. The purpose of this game is to collect as many items as possible in the shortest possible time, obviously, without getting caught by the cops. 
 ## Main Characters
-![Main Characters](img/main-characters.png)
+<p align="center">
+  <img src="./img/main-characters.png"/>
+</p>
 The main characters of the SINO-game are the thief and the policeman. Of thief there is only one, but in the future (since the game is also open source) you could think of adding more characters allied to the thief. 
 As for the policeman, there could be more than one. This obviously depends on the level. 
 
