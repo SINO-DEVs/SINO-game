@@ -4,7 +4,7 @@
 ## Overview
 SINO-game is a 3D game developed with unity 3D. The purpose of this game is to collect as many items as possible in the shortest possible time, obviously, without getting caught by the cops. 
 <p align="center">
-  <img src="./img/level01.PNG"/>
+  <img src="./img/level1.PNG"/>
 </p>
 ## Main Characters
 <p align="center">
@@ -19,7 +19,7 @@ This text you see here is *actually* written in Markdown! To get a feel for Mark
 We as SINO-DEVs have been inspired by several games. At first, we didn't want to develop the usual guard-guard game, but wanted to put some inventiveness into it. To do this we based ourselves on 2 main games, namely, Lucky Looter and Meal Gear Solid 2. 
 ### Lucky Looter
 <p align="center">
-  <img src="./img/lucky-looter.jpg"/>
+  <img style="width: 40%" src="./img/lucky-looter.jpg"/>
 </p>
 ### Metal Gear Solid 2
 <p align="center">
