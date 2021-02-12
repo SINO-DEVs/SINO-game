@@ -1,2 +1,26 @@
-# SINO-game
-A 3D game developed with unity using c#
+# SINO-game (Stealing Is Not Okay)
+
+![Acquire activation file](https://github.com/SINO-DEVs/SINO-game/workflows/Acquire%20activation%20file/badge.svg) ![Actions 😎](https://github.com/SINO-DEVs/SINO-game/workflows/Actions%20%F0%9F%98%8E/badge.svg)
+## Overview
+SINO-game is a 3D game developed with unity 3D. The purpose of this game is to collect as many items as possible in the shortest possible time, obviously, without getting caught by the cops. 
+## Main Characters
+![Main Characters](img/main-characters.png)
+The main characters of the SINO-game are the thief and the policeman. Of thief there is only one, but in the future (since the game is also open source) you could think of adding more characters allied to the thief. 
+As for the policeman, there could be more than one. This obviously depends on the level. 
+
+This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
+
+## Inspirations
+We as SINO-DEVs have been inspired by several games. At first, we didn't want to develop the usual guard-guard game, but wanted to put some inventiveness into it. To do this we based ourselves on 2 main games, namely, Lucky Looter and Meal Gear Solid 2. 
+![Lucky Looter](img/lucky-looter.png)
+![Metal Gear Solid 2](img/metal-gear-solid-2.png)
+
+
+## Development
+
+Want to contribute? Great!
+
+Feel free to add some new/modify features or the logic game.
+
+## License
+MIT © License SINO-DEVs
