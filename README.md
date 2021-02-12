@@ -14,9 +14,14 @@ This text you see here is *actually* written in Markdown! To get a feel for Mark
 
 ## Inspirations
 We as SINO-DEVs have been inspired by several games. At first, we didn't want to develop the usual guard-guard game, but wanted to put some inventiveness into it. To do this we based ourselves on 2 main games, namely, Lucky Looter and Meal Gear Solid 2. 
-![Lucky Looter](img/lucky-looter.PNG)
-![Metal Gear Solid 2](img/metal-gear-solid-2.PNG)
-
+### Lucky Looter
+<p align="center">
+  <img src="./img/lucky-looter.jpg"/>
+</p>
+### Metal Gear Solid 2
+<p align="center">
+  <img src="./img/metal-gear-solid-2.jpg"/>
+</p>
 
 ## Development
 
