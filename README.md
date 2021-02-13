@@ -17,8 +17,6 @@ SINO-game is a 3D game developed with unity 3D. The purpose of this game is to c
 The main characters of the SINO-game are the thief and the policeman. Of thief there is only one, but in the future (since the game is open source) you could think of adding more characters allied to the thief. 
 As for the policeman, there could be more than one. This obviously depends on the level. 
 
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
-
 ## Inspirations
 We as SINO-DEVs have been inspired by several games. At first, we didn't want to develop the usual guard-guard game, but wanted to put some inventiveness into it. To do this we based ourselves on 2 main games, namely, Lucky Looter and Meal Gear Solid 2. 
 
